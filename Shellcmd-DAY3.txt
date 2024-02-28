@@ -1,0 +1,323 @@
+Microsoft Windows [Version 10.0.22621.3155]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Program Files\MongoDB\Server\4.2\bin>mongo
+MongoDB shell version v4.2.25
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("79de70ba-3c61-470b-ab24-fef1720796ae") }
+MongoDB server version: 4.2.25
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+        https://docs.mongodb.com/
+Questions? Try the MongoDB Developer Community Forums
+        https://community.mongodb.com
+Server has startup warnings:
+2024-02-28T10:09:49.029+0530 I  CONTROL  [initandlisten]
+2024-02-28T10:09:49.029+0530 I  CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2024-02-28T10:09:49.029+0530 I  CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2024-02-28T10:09:49.029+0530 I  CONTROL  [initandlisten]
+---
+Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+and anyone you share the URL with. MongoDB may use this information to make product
+improvements and to suggest MongoDB products and deployment options to you.
+
+To enable free monitoring, run the following command: db.enableFreeMonitoring()
+To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> use PSNASK
+switched to db PSNASK
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> use PSNASK
+switched to db PSNASK
+> db
+PSNASK
+> db.students.insert({ name: "Saravana", age: 20, dob: "03/12/2003"})
+WriteResult({ "nInserted" : 1 })
+> show dbs
+PSNASK  0.000GB
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> db
+PSNASK
+> show collections
+students
+> db.students.find()
+{ "_id" : ObjectId("65debaa56da7d70759e5d2ad"), "name" : "Saravana", "age" : 20, "dob" : "03/12/2003" }
+> db.students.insert({ name: "Kumar", age: 21, dob: "11/10/2004"})
+WriteResult({ "nInserted" : 1 })
+> db.students.find()
+{ "_id" : ObjectId("65debaa56da7d70759e5d2ad"), "name" : "Saravana", "age" : 20, "dob" : "03/12/2003" }
+{ "_id" : ObjectId("65debb7d6da7d70759e5d2ae"), "name" : "Kumar", "age" : 21, "dob" : "11/10/2004" }
+> db.students.find().pretty()
+{
+        "_id" : ObjectId("65debaa56da7d70759e5d2ad"),
+        "name" : "Saravana",
+        "age" : 20,
+        "dob" : "03/12/2003"
+}
+{
+        "_id" : ObjectId("65debb7d6da7d70759e5d2ae"),
+        "name" : "Kumar",
+        "age" : 21,
+        "dob" : "11/10/2004"
+}
+> db.bikedb1.insert({ name: "RE", modelnum: 01, vehiclenum: "0311"})
+WriteResult({ "nInserted" : 1 })
+> db.bikedb1.insert({ name: "XL", modelnum: 02, vehiclenum: "1103"})
+WriteResult({ "nInserted" : 1 })
+> db.bikedb1.insert({ name: "SPL", modelnum: 03, vehiclenum: "2003"})
+WriteResult({ "nInserted" : 1 })
+> db.bikedb1.insert({ name: "FZ", modelnum: 04, vehiclenum: "2004"})
+WriteResult({ "nInserted" : 1 })
+> db.bikedb1.insert({ name: "ZR", modelnum: 05, vehiclenum: "2019"})
+WriteResult({ "nInserted" : 1 })
+> db.bikedb1.find().pretty()
+{
+        "_id" : ObjectId("65debc646da7d70759e5d2af"),
+        "name" : "RE",
+        "modelnum" : 1,
+        "vehiclenum" : "0311"
+}
+{
+        "_id" : ObjectId("65debc936da7d70759e5d2b0"),
+        "name" : "XL",
+        "modelnum" : 2,
+        "vehiclenum" : "1103"
+}
+{
+        "_id" : ObjectId("65debca86da7d70759e5d2b1"),
+        "name" : "SPL",
+        "modelnum" : 3,
+        "vehiclenum" : "2003"
+}
+{
+        "_id" : ObjectId("65debcbd6da7d70759e5d2b2"),
+        "name" : "FZ",
+        "modelnum" : 4,
+        "vehiclenum" : "2004"
+}
+{
+        "_id" : ObjectId("65debcd46da7d70759e5d2b3"),
+        "name" : "ZR",
+        "modelnum" : 5,
+        "vehiclenum" : "2019"
+}
+> db.bikedb2.insert({ name: "PEP", modelnum: 11, vehiclenum: "1001"})
+WriteResult({ "nInserted" : 1 })
+> db.bikedb2.insert({ name: "ACT1", modelnum: 12, vehiclenum: "1002"})
+WriteResult({ "nInserted" : 1 })
+> db.bikedb2.insert({ name: "ACT2", modelnum: 13, vehiclenum: "1003"})
+WriteResult({ "nInserted" : 1 })
+> db.bikedb2.insert({ name: "ACT3", modelnum: 14, vehiclenum: "1004"})
+WriteResult({ "nInserted" : 1 })
+> db.bikedb2.insert({ name: "ACT4", modelnum: 15, vehiclenum: "1005"})
+WriteResult({ "nInserted" : 1 })
+> db.bikedb2.insert({ name: "ACT5", modelnum: 16, vehiclenum: "1006"})
+WriteResult({ "nInserted" : 1 })
+> db.bikedb2.insert({ name: "ACT6", modelnum: 17, vehiclenum: "1007"})
+WriteResult({ "nInserted" : 1 })
+> db.bikedb2.find().pretty()
+{
+        "_id" : ObjectId("65debd1c6da7d70759e5d2b4"),
+        "name" : "PEP",
+        "modelnum" : 11,
+        "vehiclenum" : "1001"
+}
+{
+        "_id" : ObjectId("65debd336da7d70759e5d2b5"),
+        "name" : "ACT1",
+        "modelnum" : 12,
+        "vehiclenum" : "1002"
+}
+{
+        "_id" : ObjectId("65debd446da7d70759e5d2b6"),
+        "name" : "ACT2",
+        "modelnum" : 13,
+        "vehiclenum" : "1003"
+}
+{
+        "_id" : ObjectId("65debd536da7d70759e5d2b7"),
+        "name" : "ACT3",
+        "modelnum" : 14,
+        "vehiclenum" : "1004"
+}
+{
+        "_id" : ObjectId("65debd5f6da7d70759e5d2b8"),
+        "name" : "ACT4",
+        "modelnum" : 15,
+        "vehiclenum" : "1005"
+}
+{
+        "_id" : ObjectId("65debd7e6da7d70759e5d2b9"),
+        "name" : "ACT5",
+        "modelnum" : 16,
+        "vehiclenum" : "1006"
+}
+{
+        "_id" : ObjectId("65debd8b6da7d70759e5d2ba"),
+        "name" : "ACT6",
+        "modelnum" : 17,
+        "vehiclenum" : "1007"
+}
+> show collections
+bikedb1
+bikedb2
+students
+> db.bikedb1.find({name:"RE"})
+{ "_id" : ObjectId("65debc646da7d70759e5d2af"), "name" : "RE", "modelnum" : 1, "vehiclenum" : "0311" }
+> db.bikedb1.find({ modelnum: { $lt:3 } })
+{ "_id" : ObjectId("65debc646da7d70759e5d2af"), "name" : "RE", "modelnum" : 1, "vehiclenum" : "0311" }
+{ "_id" : ObjectId("65debc936da7d70759e5d2b0"), "name" : "XL", "modelnum" : 2, "vehiclenum" : "1103" }
+> db.bikedb1.find({ modelnum: { $gt:3 } })
+{ "_id" : ObjectId("65debcbd6da7d70759e5d2b2"), "name" : "FZ", "modelnum" : 4, "vehiclenum" : "2004" }
+{ "_id" : ObjectId("65debcd46da7d70759e5d2b3"), "name" : "ZR", "modelnum" : 5, "vehiclenum" : "2019" }
+> db.bikedb1.find({ modelnum: { $eq:3 } })
+{ "_id" : ObjectId("65debca86da7d70759e5d2b1"), "name" : "SPL", "modelnum" : 3, "vehiclenum" : "2003" }
+> db.bikedb1.find({ modelnum: { $ne:3 } })
+{ "_id" : ObjectId("65debc646da7d70759e5d2af"), "name" : "RE", "modelnum" : 1, "vehiclenum" : "0311" }
+{ "_id" : ObjectId("65debc936da7d70759e5d2b0"), "name" : "XL", "modelnum" : 2, "vehiclenum" : "1103" }
+{ "_id" : ObjectId("65debcbd6da7d70759e5d2b2"), "name" : "FZ", "modelnum" : 4, "vehiclenum" : "2004" }
+{ "_id" : ObjectId("65debcd46da7d70759e5d2b3"), "name" : "ZR", "modelnum" : 5, "vehiclenum" : "2019" }
+> db.bikedb1.find({ modelnum: { $lte:3 } })
+{ "_id" : ObjectId("65debc646da7d70759e5d2af"), "name" : "RE", "modelnum" : 1, "vehiclenum" : "0311" }
+{ "_id" : ObjectId("65debc936da7d70759e5d2b0"), "name" : "XL", "modelnum" : 2, "vehiclenum" : "1103" }
+{ "_id" : ObjectId("65debca86da7d70759e5d2b1"), "name" : "SPL", "modelnum" : 3, "vehiclenum" : "2003" }
+> db.bikedb1.find({ modelnum: { $gte:3 } })
+{ "_id" : ObjectId("65debca86da7d70759e5d2b1"), "name" : "SPL", "modelnum" : 3, "vehiclenum" : "2003" }
+{ "_id" : ObjectId("65debcbd6da7d70759e5d2b2"), "name" : "FZ", "modelnum" : 4, "vehiclenum" : "2004" }
+{ "_id" : ObjectId("65debcd46da7d70759e5d2b3"), "name" : "ZR", "modelnum" : 5, "vehiclenum" : "2019" }
+> db.bikedb1.find({ modelnum: { $gte:2 , $lte:4} })
+{ "_id" : ObjectId("65debc936da7d70759e5d2b0"), "name" : "XL", "modelnum" : 2, "vehiclenum" : "1103" }
+{ "_id" : ObjectId("65debca86da7d70759e5d2b1"), "name" : "SPL", "modelnum" : 3, "vehiclenum" : "2003" }
+{ "_id" : ObjectId("65debcbd6da7d70759e5d2b2"), "name" : "FZ", "modelnum" : 4, "vehiclenum" : "2004" }
+> db.bikedb1.find().limit(2)
+{ "_id" : ObjectId("65debc646da7d70759e5d2af"), "name" : "RE", "modelnum" : 1, "vehiclenum" : "0311" }
+{ "_id" : ObjectId("65debc936da7d70759e5d2b0"), "name" : "XL", "modelnum" : 2, "vehiclenum" : "1103" }
+> db.bikedb1.find({}, { name:1, modelnum:1 })
+{ "_id" : ObjectId("65debc646da7d70759e5d2af"), "name" : "RE", "modelnum" : 1 }
+{ "_id" : ObjectId("65debc936da7d70759e5d2b0"), "name" : "XL", "modelnum" : 2 }
+{ "_id" : ObjectId("65debca86da7d70759e5d2b1"), "name" : "SPL", "modelnum" : 3 }
+{ "_id" : ObjectId("65debcbd6da7d70759e5d2b2"), "name" : "FZ", "modelnum" : 4 }
+{ "_id" : ObjectId("65debcd46da7d70759e5d2b3"), "name" : "ZR", "modelnum" : 5 }
+> db.bikedb1.find({modelnum:4}, { name:1, modelnum:1 })
+{ "_id" : ObjectId("65debcbd6da7d70759e5d2b2"), "name" : "FZ", "modelnum" : 4 }
+> db.bikedb1.find().skip(2)
+{ "_id" : ObjectId("65debca86da7d70759e5d2b1"), "name" : "SPL", "modelnum" : 3, "vehiclenum" : "2003" }
+{ "_id" : ObjectId("65debcbd6da7d70759e5d2b2"), "name" : "FZ", "modelnum" : 4, "vehiclenum" : "2004" }
+{ "_id" : ObjectId("65debcd46da7d70759e5d2b3"), "name" : "ZR", "modelnum" : 5, "vehiclenum" : "2019" }
+> db.bikedb1.find().skip(2).limit(1)
+{ "_id" : ObjectId("65debca86da7d70759e5d2b1"), "name" : "SPL", "modelnum" : 3, "vehiclenum" : "2003" }
+> db.bikedb1.find().sort({ modelnum:-1 })
+{ "_id" : ObjectId("65debcd46da7d70759e5d2b3"), "name" : "ZR", "modelnum" : 5, "vehiclenum" : "2019" }
+{ "_id" : ObjectId("65debcbd6da7d70759e5d2b2"), "name" : "FZ", "modelnum" : 4, "vehiclenum" : "2004" }
+{ "_id" : ObjectId("65debca86da7d70759e5d2b1"), "name" : "SPL", "modelnum" : 3, "vehiclenum" : "2003" }
+{ "_id" : ObjectId("65debc936da7d70759e5d2b0"), "name" : "XL", "modelnum" : 2, "vehiclenum" : "1103" }
+{ "_id" : ObjectId("65debc646da7d70759e5d2af"), "name" : "RE", "modelnum" : 1, "vehiclenum" : "0311" }
+> db.bikedb1.find().sort({ name: /s/ })
+Error: error: {
+        "ok" : 0,
+        "errmsg" : "bad sort specification",
+        "code" : 2,
+        "codeName" : "BadValue"
+}
+> db.bikedb1.find({ name: /c/ })
+> db.bikedb1.find({ name: /s/ })
+> db.bikedb1.find({ name: /S/ })
+{ "_id" : ObjectId("65debca86da7d70759e5d2b1"), "name" : "SPL", "modelnum" : 3, "vehiclenum" : "2003" }
+> db.bikedb1.find({ name: /S/ }).count()
+1
+> db.bikedb1.find({ name: /S/ }).toArray()
+[
+        {
+                "_id" : ObjectId("65debca86da7d70759e5d2b1"),
+                "name" : "SPL",
+                "modelnum" : 3,
+                "vehiclenum" : "2003"
+        }
+]
+> db.bikedb1.find({ name: /S/ }).toArray()[0]
+{
+        "_id" : ObjectId("65debca86da7d70759e5d2b1"),
+        "name" : "SPL",
+        "modelnum" : 3,
+        "vehiclenum" : "2003"
+}
+> db.bikedb1.updateOne({}, { $set: { vehiclenum" "2003"} })
+2024-02-28T11:57:57.486+0530 E  QUERY    [js] uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:45
+> db.bikedb1.updateOne({}, { $set: { vehiclenum: "2003"} })
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.bikedb1.find()
+{ "_id" : ObjectId("65debc646da7d70759e5d2af"), "name" : "RE", "modelnum" : 1, "vehiclenum" : "2003" }
+{ "_id" : ObjectId("65debc936da7d70759e5d2b0"), "name" : "XL", "modelnum" : 2, "vehiclenum" : "1103" }
+{ "_id" : ObjectId("65debca86da7d70759e5d2b1"), "name" : "SPL", "modelnum" : 3, "vehiclenum" : "2003" }
+{ "_id" : ObjectId("65debcbd6da7d70759e5d2b2"), "name" : "FZ", "modelnum" : 4, "vehiclenum" : "2004" }
+{ "_id" : ObjectId("65debcd46da7d70759e5d2b3"), "name" : "ZR", "modelnum" : 5, "vehiclenum" : "2019" }
+> db.bikedb1.updateMany({ name: /X/ }, { $set: { vehiclenum: "2024"} })
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.bikedb1.find()
+{ "_id" : ObjectId("65debc646da7d70759e5d2af"), "name" : "RE", "modelnum" : 1, "vehiclenum" : "2003" }
+{ "_id" : ObjectId("65debc936da7d70759e5d2b0"), "name" : "XL", "modelnum" : 2, "vehiclenum" : "2024" }
+{ "_id" : ObjectId("65debca86da7d70759e5d2b1"), "name" : "SPL", "modelnum" : 3, "vehiclenum" : "2003" }
+{ "_id" : ObjectId("65debcbd6da7d70759e5d2b2"), "name" : "FZ", "modelnum" : 4, "vehiclenum" : "2004" }
+{ "_id" : ObjectId("65debcd46da7d70759e5d2b3"), "name" : "ZR", "modelnum" : 5, "vehiclenum" : "2019" }
+> db.bikedb1.find({ modelnum : { $in : [2,3] } })
+{ "_id" : ObjectId("65debc936da7d70759e5d2b0"), "name" : "XL", "modelnum" : 2, "vehiclenum" : "2024" }
+{ "_id" : ObjectId("65debca86da7d70759e5d2b1"), "name" : "SPL", "modelnum" : 3, "vehiclenum" : "2003" }
+> db.bikedb1.find({ modelnum : { $nin : [2,3] } })
+{ "_id" : ObjectId("65debc646da7d70759e5d2af"), "name" : "RE", "modelnum" : 1, "vehiclenum" : "2003" }
+{ "_id" : ObjectId("65debcbd6da7d70759e5d2b2"), "name" : "FZ", "modelnum" : 4, "vehiclenum" : "2004" }
+{ "_id" : ObjectId("65debcd46da7d70759e5d2b3"), "name" : "ZR", "modelnum" : 5, "vehiclenum" : "2019" }
+> db.bikedb1.updateMany({ name: /X/ }, { $set: { active : true } })
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.bikedb1.find()
+{ "_id" : ObjectId("65debc646da7d70759e5d2af"), "name" : "RE", "modelnum" : 1, "vehiclenum" : "2003" }
+{ "_id" : ObjectId("65debc936da7d70759e5d2b0"), "name" : "XL", "modelnum" : 2, "vehiclenum" : "2024", "active" : true }
+{ "_id" : ObjectId("65debca86da7d70759e5d2b1"), "name" : "SPL", "modelnum" : 3, "vehiclenum" : "2003" }
+{ "_id" : ObjectId("65debcbd6da7d70759e5d2b2"), "name" : "FZ", "modelnum" : 4, "vehiclenum" : "2004" }
+{ "_id" : ObjectId("65debcd46da7d70759e5d2b3"), "name" : "ZR", "modelnum" : 5, "vehiclenum" : "2019" }
+> db.bikedb1.find({ active: true} )
+{ "_id" : ObjectId("65debc936da7d70759e5d2b0"), "name" : "XL", "modelnum" : 2, "vehiclenum" : "2024", "active" : true }
+> db.bikedb1.find({ active: { $exists: false} } )
+{ "_id" : ObjectId("65debc646da7d70759e5d2af"), "name" : "RE", "modelnum" : 1, "vehiclenum" : "2003" }
+{ "_id" : ObjectId("65debca86da7d70759e5d2b1"), "name" : "SPL", "modelnum" : 3, "vehiclenum" : "2003" }
+{ "_id" : ObjectId("65debcbd6da7d70759e5d2b2"), "name" : "FZ", "modelnum" : 4, "vehiclenum" : "2004" }
+{ "_id" : ObjectId("65debcd46da7d70759e5d2b3"), "name" : "ZR", "modelnum" : 5, "vehiclenum" : "2019" }
+> db.bikedb1.updateMany({ active: { $exists: true} } . { $unset: {active:1} })
+2024-02-28T12:19:52.784+0530 E  QUERY    [js] uncaught exception: SyntaxError: missing name after . operator :
+@(shell):1:53
+> db.bikedb1.updateMany({ active: { $exists: true} } , { $unset: {active:1} })
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.bikedb1.find({ active: { $exists: true} } )
+> db.bikedb1.updateMany({ } , { $set: {active:true} })
+{ "acknowledged" : true, "matchedCount" : 5, "modifiedCount" : 5 }
+> db.bikedb1.find()
+{ "_id" : ObjectId("65debc646da7d70759e5d2af"), "name" : "RE", "modelnum" : 1, "vehiclenum" : "2003", "active" : true }
+{ "_id" : ObjectId("65debc936da7d70759e5d2b0"), "name" : "XL", "modelnum" : 2, "vehiclenum" : "2024", "active" : true }
+{ "_id" : ObjectId("65debca86da7d70759e5d2b1"), "name" : "SPL", "modelnum" : 3, "vehiclenum" : "2003", "active" : true }
+{ "_id" : ObjectId("65debcbd6da7d70759e5d2b2"), "name" : "FZ", "modelnum" : 4, "vehiclenum" : "2004", "active" : true }
+{ "_id" : ObjectId("65debcd46da7d70759e5d2b3"), "name" : "ZR", "modelnum" : 5, "vehiclenum" : "2019", "active" : true }
+> db.bikedb1.updateMany({ active: { $exists: true} } , { $rename: {active: "status"} })
+{ "acknowledged" : true, "matchedCount" : 5, "modifiedCount" : 5 }
+> db.bikedb1.find()
+{ "_id" : ObjectId("65debc646da7d70759e5d2af"), "name" : "RE", "modelnum" : 1, "vehiclenum" : "2003", "status" : true }
+{ "_id" : ObjectId("65debc936da7d70759e5d2b0"), "name" : "XL", "modelnum" : 2, "vehiclenum" : "2024", "status" : true }
+{ "_id" : ObjectId("65debca86da7d70759e5d2b1"), "name" : "SPL", "modelnum" : 3, "vehiclenum" : "2003", "status" : true }
+{ "_id" : ObjectId("65debcbd6da7d70759e5d2b2"), "name" : "FZ", "modelnum" : 4, "vehiclenum" : "2004", "status" : true }
+{ "_id" : ObjectId("65debcd46da7d70759e5d2b3"), "name" : "ZR", "modelnum" : 5, "vehiclenum" : "2019", "status" : true }
+> db.bikedb1.countDocuments({})
+5
+>
